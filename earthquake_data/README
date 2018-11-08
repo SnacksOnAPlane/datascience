@@ -1,0 +1,65 @@
+	SOUTHERN CALIFORNIA SEISMOGRAPHIC NETWORK (SCSN) FORMAT CATALOG DATA
+	--------------------------------------------------------------------
+                                 (06/17/03)  
+
+The Southern California Earthquake Data Center (SCEDC) catalog consists of 
+hypocentral information for 1932 through the present. For information on 
+catalog completeness and data sources, see 
+http://www.data.scec.org/about/data_avail.html.
+
+SCSN-format catalog data (described below) are stored in yearly 
+ASCII *.catalog files.
+
+==============================================================================
+	       SCSN (a.k.a. CALTECH or CATREAD) FORMAT specification
+                                 (06/17/03)
+==============================================================================
+
+	col len format name	comment
+	--- --- ------ ----	-------
+	 1   4    a4   year	YYYY
+	 6   2    a2   mon	MM
+	 9   2    a2   day	DD
+	13   2    a2   hour	HH	(UTC time:
+	16   2    a2   min	mm	 7 hours ahead of Pacific Daylight Time
+	19   5   f5.2  sec	SS.ss	 8 hours ahead of Pacific Standard Time)
+        25   3    i3   lat	degrees	
+        29   5   f5.2  lat      minutes 
+        34   4    i4   lon	degrees  
+        39   5   f5.2  lon	minutes
+	45   1	  a1   quality	location quality
+					'A'  +- 1 km horizontal distance
+					     +- 2 km depth
+					'B'  +- 2 km horizontal distance
+					     +- 5 km depth
+				  	'C'  +- 5 km horizontal distance
+					     no depth restriction
+					'D'  >+- 5 km horizontal distance
+					'Z'  no quality listed in database
+	47   3   f3.1  magnitude
+	54   6   f6.2  depth	kilometers
+	60   3	  i3   nph	number of picked phases
+	67   5   f5.2  rms	root mean square of travel times
+	73   8    i8   eventid	event ID
+					
+==============================================================================
+           Plotting format specification (hypoinverse format)
+                                   (2/8/99)  
+==============================================================================
+	col len format name	comment
+	--- --- ------ ----     -------
+ 	 1   2    i2    yr
+	 3   2    i2    mon
+	 5   2    i2    day
+	 6   2    i2    hour	(UTC time - is either 7 or 8 hours ahead of
+			         local time)
+	 8   4    i4    min
+	11   4    i4    sec	to the hundredths place (e.g. 50.06 sec)
+	15   2    i2    lat	(degrees)		
+	18   4    i4    lat     (minutes, e.g. 1597 = 15.97) 
+	22   3    i3    long	(degrees)
+	26   4    i4    lat  	(minutes, e.g. 2928 = 29.28)
+	31   4    i4    depth	(e.g. 1253 - 12.53 km)
+	68   2    i2    mag	(e.g. 19 = 1.9)
+	70   1    a1    quality (same as above)
+

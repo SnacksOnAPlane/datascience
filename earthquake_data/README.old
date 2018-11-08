@@ -1,0 +1,74 @@
+	SOUTHERN CALIFORNIA SEISMOGRAPHIC NETWORK (SCSN) FORMAT CATALOG DATA
+	--------------------------------------------------------------------
+				   (2/8/99)  
+CATALOG DATA
+------------
+    The earthquake catalog of the SCSN consists of data from 1932 through
+the present.  It is complete for local events greater than or equal to 
+M3.0 since 1932, and above M1.8 since 1981. Between the time periods of
+January 1984 through the present, it is complete for all magnitude events.
+
+   SCSN catalog data in the Caltech format (described below) is stored in 
+yearly ascii *.catalog files.  Beginning with 1975, these files cover a time
+period of one year.  Events from 1932 to 1959 are listed in 193259.catalog; 
+1960 to 1974 events in 196074.catalog. 
+
+==============================================================================
+	       SCSN (CALTECH Format) and "year.catalog" file specification
+==============================================================================
+
+	col len format name	comment
+	--- --- ------ ----	-------
+	 1   4    i4   year	
+	 6   2    i2   mon	
+	 9   2    i2   day	
+	13   2    i2   hour	(UTC time, is either 7 or 8 hours ahead of
+				 local time)	
+	16   2    i2   min	
+	19   5   f5.2  sec	
+        26   2    i2   lat	degrees	(0.00 for regional & teleseismic events)
+        29   5   f5.2  lat      minutes ( "    "     "     "       "       "  ) 
+        34   5    i4   lon	degrees ( "    "     "     "       "       " )  
+					( minus sign represents west longitude)
+        39   5   f5.2  lon	minutes ( "    "     "     "       "       " )
+	45   1	  a1   quality	location quality
+					'A'  +- 1 km horizontal distance
+					     +- 2 km depth
+					'B'  +- 2 km horizontal distance
+					     +- 5 km depth
+				  	'C'  +- 5 km horizontal distance
+					     no depth restriction
+					'D'  >+- 5 km horizontal distance
+				**** BUYER BEWARE ****
+				Event qualities are highly suspect prior
+                                to 1990.  Many of these event qualities
+                                are based on incomplete information.
+                                Also, they are really only applicable
+                                to LOCAL events
+	47   3   f3.1  mag
+	55   5   f5.2  depth
+	60   3	  i3   nph	number of picked phases
+	67   4   f4.2  rms	sum of rms of all picked stations
+	72   7    i7   id	event id number (i.e. cuspid)	
+					
+Total card width = 78
+==============================================================================
+           Plotting format specification (hypoinverse format)
+==============================================================================
+	col len format name	comment
+	--- --- ------ ----     -------
+ 	 1   2    i2    yr
+	 3   2    i2    mon
+	 5   2    i2    day
+	 6   2    i2    hour	(UTC time - is either 7 or 8 hours ahead of
+			         local time)
+	 8   4    i4    min
+	11   4    i4    sec	to the hundredths place (e.g. 50.06 sec)
+	15   2    i2    lat	(degrees)		
+	18   4    i4    lat     (minutes, e.g. 1597 = 15.97) 
+	22   3    i3    long	(degrees)
+	26   4    i4    lat  	(minutes, e.g. 2928 = 29.28)
+	31   4    i4    depth	(e.g. 1253 - 12.53 km)
+	68   2    i2    mag	(e.g. 19 = 1.9)
+	70   1    a1    quality (same as above)
+
